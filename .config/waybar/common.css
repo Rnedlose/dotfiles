@@ -1,0 +1,127 @@
+/* Shared tweaks used by style.css - DISABLED FOR BUBBLE STYLE */
+/*
+* {
+  background-color: @bg;
+  color: @text;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+}
+*/
+
+/* Even spacing for all right-side icons - DISABLED FOR BUBBLE STYLE */
+/*
+.modules-right>* {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+*/
+
+/* Fallback for GTK quirks: explicitly list the modules, same gap - DISABLED FOR BUBBLE STYLE */
+/*
+#bluetooth,
+#network,
+#pulseaudio,
+#cpu,
+#battery,
+#custom-notify,
+#custom-scripts {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+*/
+
+/* DISABLED FOR BUBBLE STYLE */
+/*
+.modules-left {
+  margin-left: 12px;
+}
+
+/* Workspaces */
+/*
+#workspaces {
+  padding: 0 6px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 8px;
+  margin: 0 4px;
+  min-width: 9px;
+  color: @text;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#workspaces button.active {
+  color: @mauve;
+  border-bottom: 2px solid @mauve;
+}
+*/
+
+/* Common modules - DISABLED FOR BUBBLE STYLE */
+/*
+#tray,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#clock {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#network {
+  color: @blue;
+}
+
+#pulseaudio {
+  color: @green;
+}
+
+#battery {
+  color: @yellow;
+}
+
+#bluetooth {
+  color: @mauve;
+}
+*/
+
+#custom-expand-icon {
+  margin-right: 7px;
+}
+
+tooltip {
+  padding: 6px 8px;
+  background: @mantle;
+  color: @text;
+  border: 1px solid alpha(@overlay0, 0.35);
+  border-radius: 6px;
+}
+
+#battery.critical {
+  color: @red;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+/* DISABLED FOR BUBBLE STYLE */
+/*
+window#waybar {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+*/

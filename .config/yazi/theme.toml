@@ -1,0 +1,6 @@
+# Yazi theme configuration
+# This file specifies which theme to use
+
+# Use the Tokyo Night Night theme
+# The theme file should be located at themes/tokyonight_night.toml
+use = "tokyonight_night"

@@ -1,0 +1,167 @@
+# Vague theme for Yazi
+# Matches the Vague theme used in Alacritty and Kitty terminals
+# Theme Author: vague2k <ilovedrawing056@gmail.com>
+# Ported for Yazi by: Assistant
+
+# Vague Color Palette:
+# bg = #141415 (background)
+# fg = #cdcdcd (foreground)
+# black = #252530 / bright_black = #606079
+# red = #d8647e / bright_red = #e08398
+# green = #7fa563 / bright_green = #99b782
+# yellow = #f3be7c / bright_yellow = #f5cb96
+# blue = #6e94b2 / bright_blue = #8ba9c1
+# magenta = #bb9dbd / bright_magenta = #c9b1ca
+# cyan = #aeaed1 / bright_cyan = #bebeda
+# white = #cdcdcd / bright_white = #d7d7d7
+
+[manager]
+cwd = { fg = "#6e94b2", italic = true } # blue
+
+# Hovered
+hovered = { bg = "#252530" } # black
+preview_hovered = { bg = "#252530" } # black
+
+# Find
+find_keyword = { fg = "#141415", bg = "#f3be7c", bold = true } # bg on yellow
+find_position = { fg = "#aeaed1", bg = "#252530", bold = true } # cyan on black
+
+# Marker
+marker_copied = { fg = "#7fa563", bg = "#7fa563" } # green
+marker_cut = { fg = "#d8647e", bg = "#d8647e" } # red
+marker_marked = { fg = "#bb9dbd", bg = "#bb9dbd" } # magenta
+marker_selected = { fg = "#6e94b2", bg = "#6e94b2" } # blue
+
+# Tab
+tab_active = { fg = "#cdcdcd", bg = "#252530" } # fg on black
+tab_inactive = { fg = "#606079", bg = "#141415" } # bright_black on bg
+tab_width = 1
+
+# Count
+count_copied = { fg = "#cdcdcd", bg = "#7fa563" } # fg on green
+count_cut = { fg = "#cdcdcd", bg = "#d8647e" } # fg on red
+count_selected = { fg = "#cdcdcd", bg = "#6e94b2" } # fg on blue
+
+# Border
+border_symbol = "│"
+border_style = { fg = "#606079" } # bright_black
+
+[mode]
+normal_main = { fg = "#141415", bg = "#6e94b2", bold = true } # bg on blue
+normal_alt = { fg = "#6e94b2", bg = "#606079" } # blue on bright_black
+
+select_main = { fg = "#141415", bg = "#bb9dbd", bold = true } # bg on magenta
+select_alt = { fg = "#bb9dbd", bg = "#606079" } # magenta on bright_black
+
+unset_main = { fg = "#141415", bg = "#c9b1ca", bold = true } # bg on bright_magenta
+unset_alt = { fg = "#c9b1ca", bg = "#606079" } # bright_magenta on bright_black
+
+[status]
+separator_open = ""
+separator_close = ""
+
+# Progress
+progress_label = { fg = "#cdcdcd", bold = true } # fg
+progress_normal = { fg = "#141415" } # bg
+progress_error = { fg = "#d8647e" } # red
+
+# Permissions
+perm_type = { fg = "#6e94b2" } # blue
+perm_read = { fg = "#f3be7c" } # yellow
+perm_write = { fg = "#d8647e" } # red
+perm_exec = { fg = "#7fa563" } # green
+perm_sep = { fg = "#606079" } # bright_black
+
+[pick]
+border = { fg = "#606079" } # bright_black
+active = { fg = "#cdcdcd", bg = "#252530" } # fg on black
+inactive = { fg = "#cdcdcd" } # fg
+
+# Input
+[input]
+border = { fg = "#aeaed1" } # cyan
+title = { fg = "#aeaed1" } # cyan
+value = { fg = "#bb9dbd" } # magenta
+selected = { bg = "#252530" } # black
+
+# Completion
+[completion]
+border = { fg = "#aeaed1" } # cyan
+active = { fg = "#cdcdcd", bg = "#252530" } # fg on black
+inactive = { fg = "#cdcdcd" } # fg
+
+icon_file = ""
+icon_folder = ""
+icon_command = ""
+
+# Tasks
+[tasks]
+border = { fg = "#606079" } # bright_black
+title = { fg = "#aeaed1" } # cyan
+hovered = { fg = "#cdcdcd", bg = "#252530" } # fg on black
+
+# Which
+[which]
+cols = 3
+mask = { bg = "#141415" } # bg
+cand = { fg = "#bebeda" } # bright_cyan
+rest = { fg = "#6e94b2" } # blue
+desc = { fg = "#bb9dbd" } # magenta
+separator = " ➜ "
+separator_style = { fg = "#606079" } # bright_black
+
+# Confirm
+[confirm]
+border = { fg = "#aeaed1" } # cyan
+title = { fg = "#aeaed1" } # cyan
+content = {}
+list = {}
+btn_yes = { bg = "#252530" } # black
+btn_no = {}
+btn_labels = ["  [Y]es  ", "  (N)o  "]
+
+# Spot
+[spot]
+border = { fg = "#aeaed1" } # cyan
+title = { fg = "#aeaed1" } # cyan
+
+# Notify
+[notify]
+title_info = { fg = "#aeaed1" } # cyan
+title_warn = { fg = "#f3be7c" } # yellow
+title_error = { fg = "#d8647e" } # red
+
+icon_error = ""
+icon_warn = ""
+icon_info = ""
+
+# Help
+[help]
+on = { fg = "#7fa563" } # green
+run = { fg = "#bb9dbd" } # magenta
+hovered = { bg = "#252530" } # black
+footer = { fg = "#cdcdcd", bg = "#141415" } # fg on bg
+
+[filetype]
+
+rules = [
+    # Images
+    { mime = "image/*", fg = "#f3be7c" }, # yellow
+
+    # Media
+    { mime = "{audio,video}/*", fg = "#bb9dbd" }, # magenta
+
+    # Archives
+    { mime = "application/*zip", fg = "#d8647e" }, # red
+    { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#d8647e" }, # red
+
+    # Documents
+    { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#aeaed1" }, # cyan
+
+    # Special files
+    { name = "*", is = "orphan", bg = "#d8647e" }, # red bg for broken symlinks
+    { name = "*", is = "exec", fg = "#7fa563" }, # green for executables
+
+    # Fallback - directories
+    { name = "*/", fg = "#6e94b2" } # blue for directories
+]

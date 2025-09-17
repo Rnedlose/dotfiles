@@ -1,0 +1,66 @@
+/**
+ * Tokyo Night Power Menu theme for rofi
+ * Based on tokyo-night.rasi with power menu specific styling
+ */
+
+@import "tokyo-night.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font 14";
+}
+
+window {
+    width: 280px;
+    height: 320px;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    padding: 12px;
+}
+
+inputbar {
+    enabled: false;
+}
+
+listview {
+    columns: 1;
+    lines: 6;
+    spacing: 8px;
+    margin: 0px;
+    padding: 0px;
+}
+
+element {
+    padding: 12px;
+    border-radius: 10px;
+    spacing: 12px;
+    orientation: horizontal;
+}
+
+element-icon {
+    size: 24px;
+    horizontal-align: 0.5;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 14";
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+    expand: true;
+}
+
+element.selected.normal {
+    background-color: @selection;
+    text-color: @accent;
+    border: 2px;
+    border-color: @accent;
+}
+
+element.normal.normal {
+    background-color: @bg1;
+    text-color: @fg;
+    border: 1px;
+    border-color: @border;
+}

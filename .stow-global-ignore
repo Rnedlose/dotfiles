@@ -1,0 +1,60 @@
+# editor/backup junk
+\.swp$
+\.swo$
+~$
+\.bak$
+
+# OS junk
+\.DS_Store$
+Thumbs\.db$
+__MACOSX(?:/|$)
+
+# Git files and directories
+.git
+.gitignore
+.gitmodules
+.gitattributes
+.gitkeep
+
+# macOS system files
+.DS_Store
+.AppleDouble
+._*
+.Spotlight-V100
+.Trashes
+
+# Common temporary/cache files
+\*.tmp
+\*.temp
+\*.swp
+\*.swo
+\*~
+.#*
+#*#
+
+# IDE/Editor files
+.vscode/
+.idea/
+\*.sublime-\*
+
+# Documentation and project files
+README\*
+LICENSE\*
+CHANGELOG\*
+TODO\*
+Makefile
+makefile
+
+# Package manager files
+package.json
+package-lock.json
+yarn.lock
+Cargo.toml
+Cargo.lock
+go.mod
+go.sum
+
+# Common config files you might not want to stow
+.editorconfig
+.eslintrc\*
+.prettierrc\*

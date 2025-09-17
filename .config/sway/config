@@ -1,0 +1,236 @@
+# Set common variables
+set $mod Mod1
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $files-term kitty --class=kitty_files -e tmux new-session -A -s Files yazi
+set $scratch-term kitty --class=kitty_scratch -e tmux new-session -A -s Scratchpad
+
+set $menu "rofi -show drun"
+set $browser google-chrome-stable --new-window --ozone-platform=wayland
+set $files nautilus
+set $lockscreen ~/.config/sway/scripts/lockscreen.sh
+
+# Background changer via swww
+set $walls "${HOME}/.config/swww/walls.sh"
+
+# Default Font
+font pango:JetBrainsMono Nerd Font Regular 12
+
+# A little eye candy is ok
+set $corner_radius 6
+gaps inner 8
+gaps outer 4
+default_border pixel 2
+# Class                 border  Backgr  Text    indicator   child_border
+client.focused          #7aa2f7 #1a1b26 #c0caf5 #bb9af7     #7aa2f7
+client.unfocused        #414868 #24283b #565f89 #414868     #414868
+client.urgent           #f7768e #1a1b26 #c0caf5 #f7768e     #f7768e
+
+corner_radius 10
+shadows enable
+shadows_on_csd enable
+shadow_blur_radius 20
+shadow_color #0000007F
+default_dim_inactive 0.0
+dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.urgent #900000FF
+
+# Start essential services
+exec_always autotiling
+exec_always swayosd-server
+exec_always swaync
+exec waybar
+exec wl-paste --watch cliphist store
+exec swayidle -w timeout 300 '$lockscreen -f' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep '$lockscreen -f'
+exec sunsetr
+exec $walls
+exec spotify
+exec obsidian
+exec $files-term
+exec $scratch-term
+
+# External monitor (DP-3) - 4K at scale 1.67, positioned at top
+output DP-3 resolution 3840x2160 scale 1.67 position 0 0
+
+# Laptop screen (eDP-1) - centered underneath external monitor
+output eDP-1 resolution 2880x1920 scale 2.0 position 430 1294
+
+# Laptop touchpad
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll false
+    middle_emulation enabled
+}
+
+# Swap alt/win and capslock to left control
+input type:keyboard {
+    xkb_options "ctrl:swapcaps"
+}
+# altwin:swap_lalt_lwin,
+
+# Keybinds
+bindsym $mod+b exec $browser
+bindsym $mod+t exec $term
+bindsym $mod+w kill
+bindsym $mod+space exec $menu
+bindsym $mod+Shift+f exec $files
+
+# Webapps
+bindsym $mod+m exec $browser --app="https://messages.google.com/web/conversations"
+bindsym $mod+a exec $browser --app="https://chatgpt.com"
+bindsym $mod+y exec $browser --app="https://youtube.com/"
+bindsym $mod+d exec $browser --app="https://discord.com/channels/@me"
+bindsym $mod+g exec $browser --app="https://grok.com"
+bindsym $mod+r exec $browser --app="https://reddit.com"
+bindsym $mod+x exec $browser --app="https://x.com/"
+
+# Windows
+bindsym $mod+backslash exec rofi -show window
+
+# Clipboard manager
+bindsym $mod+c exec ~/.config/sway/scripts/clipboard.sh
+
+# Walls
+bindsym $mod+u exec $walls
+
+# Notification center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+# Lockscreen manually
+bindsym $mod+Shift+x exec $lockscreen
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+Space exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Power menu
+set $power "rofi -show p -modi p:${HOME}/.config/rofi/rofi-power-menu --symbols-font 'Symbols Nerd Font' -theme tokyo-night-power"
+bindsym $mod+Shift+p exec $power
+
+# Volume with swayosd notifications
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower  
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+
+# Media playerctl
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+
+# Backlight with swayosd notifications
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness +5
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness -5
+
+# Print Screen alone: screenshot an area, save to files and clipboard
+bindsym Print exec ~/.config/sway/scripts/screenshots.sh area
+
+# Control + Print Screen: screenshot whole selected screen, save to files and clipboard
+bindsym Control+Print exec ~/.config/sway/scripts/screenshots.sh fullscreen
+
+# Reload config file
+bindsym $mod+Shift+c exec "sway reload && notify-send -e 'Config reloaded'  'Sway happy!'"
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same
+bindsym $mod+Super+$left move left
+bindsym $mod+Super+$down move down
+bindsym $mod+Super+$up move up
+bindsym $mod+Super+$right move right
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Super+1 move container to workspace number 1, workspace number 1
+bindsym $mod+Super+2 move container to workspace number 2, workspace number 2
+bindsym $mod+Super+3 move container to workspace number 3, workspace number 3
+bindsym $mod+Super+4 move container to workspace number 4, workspace number 4
+bindsym $mod+Super+5 move container to workspace number 5, workspace number 5
+bindsym $mod+Super+6 move container to workspace number 6, workspace number 6
+bindsym $mod+Super+7 move container to workspace number 7, workspace number 7
+bindsym $mod+Super+8 move container to workspace number 8, workspace number 8
+bindsym $mod+Super+9 move container to workspace number 9, workspace number 9
+bindsym $mod+Super+0 move container to workspace number 10, workspace number 10
+
+# Tiling options
+bindsym $mod+n splith
+bindsym $mod+v splitv
+
+# Fullscrren is nice at times
+bindsym F11 fullscreen
+
+# Floating
+bindsym $mod+q floating toggle
+
+# Move floating windows
+floating_modifier $mod normal
+
+# Resizing
+mode "resize" {
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+r mode "resize"
+
+
+# Floating window rules
+for_window [app_id="Impala"] floating enable, move position center
+for_window [app_id="Wiremix"] floating enable, move position center
+for_window [app_id="Bluetui"] floating enable, move position center
+
+for_window [app_id="kitty"] floating enable, resize set width 80ppt height 70ppt
+for_window [app_id="kitty_files"] floating enable, resize set width 80ppt height 70ppt
+for_window [app_id="kitty_scratch"] floating enable, resize set width 80ppt height 70ppt
+for_window [class="Spotify"] floating enable, resize set width 80ppt height 80ppt
+for_window [class="obsidian"] floating enable, resize set width 80ppt height 80ppt
+
+for_window [app_id="kitty_files"] move to scratchpad
+for_window [app_id="kitty_scratch"] move to scratchpad
+for_window [class="Spotify"] move to scratchpad
+for_window [class="obsidian"] move to scratchpad
+
+bindsym $mod+f [app_id="kitty_files"] scratchpad show, resize set width 80ppt height 70ppt, move position center
+bindsym F12 [app_id="kitty_scratch"] scratchpad show, resize set width 80ppt height 70ppt, move position center
+bindsym $mod+s [class="Spotify"] scratchpad show, move position center
+bindsym $mod+o [class="obsidian"] scratchpad show, move position center
+
+# clamshell mode
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+
+include /etc/sway/config.d/*

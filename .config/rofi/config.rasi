@@ -1,0 +1,41 @@
+configuration {
+	modes: "drun,window,filebrowser,run";
+	show-icons: true;
+	font: "JetBrainsMono Nerd Font Regular 12";
+	terminal: "kitty";
+	sidebar-mode: true;
+	kb-mode-next: "";
+	kb-mode-previous: "";
+	kb-mode-previous: "ISO_Left_Tab";
+	kb-mode-next: "Tab";
+	kb-element-next: "";
+	kb-element-prev: "";
+	
+	disable-history: true; // disables recency sorting
+
+	display-drun: "󰣆";
+	display-run: "󱃷";
+	display-window: "󱂬";
+	display-filebrowser: "";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  drun {
+      fallback-icon: "applications-other";
+  }
+  run {
+      fallback-icon: "applications-other";
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+      show-hidden: true;
+  }
+}
+
+element {
+    children: [element-icon, element-text];
+}
+
+@theme "./themes/tokyo-night.rasi"

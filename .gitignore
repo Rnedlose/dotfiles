@@ -1,0 +1,8 @@
+# Ignore large binaries
+.local/bin/obsidian
+
+# Vesktop/Discord sensitive data
+.config/vesktop/sessionData/
+.config/vesktop/Crashpad/
+.config/vesktop/state.json
+.config/vesktop/Singleton*

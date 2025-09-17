@@ -1,0 +1,205 @@
+/* Waybar – Tokyo Night Night Theme */
+/* @import url("./common.css"); */
+/* DISABLED - using bubble style instead */
+
+/* ===== Tokyo Night Night Color Palette =====
+ * Based on https://github.com/folke/tokyonight.nvim
+ * Night variant colors
+ ============================================= */
+
+/* Primary Tokyo Night Night colors */
+@define-color bg #1a1b26;        /* bg */
+@define-color text #c0caf5;      /* fg */
+
+/* Neutrals */
+@define-color black #15161e;     /* bg_dark */
+@define-color white #c0caf5;     /* fg */
+@define-color brightblk #565f89; /* comment */
+
+/* Tokyo Night Night accent colors */
+@define-color red #f7768e;       /* red */
+@define-color green #9ece6a;     /* green */
+@define-color yellow #e0af68;    /* yellow */
+@define-color blue #7aa2f7;      /* blue */
+@define-color purple #bb9af7;    /* purple */
+@define-color aqua #7dcfff;      /* cyan */
+
+/* Bright/saturated variants */
+@define-color bred #f7768e;      /* red (same) */
+@define-color bgreen #9ece6a;    /* green (same) */
+@define-color byellow #e0af68;   /* yellow (same) */
+@define-color bblue #7aa2f7;     /* blue (same) */
+@define-color bpurple #bb9af7;   /* purple (same) */
+@define-color baqua #7dcfff;     /* cyan (same) */
+@define-color bwhite #c0caf5;    /* fg */
+
+/* Special Tokyo Night colors */
+@define-color selection #283457; /* bg_visual */
+@define-color border #3b4261;    /* border */
+@define-color surface #24283b;   /* bg_highlight */
+
+/* Aliases to satisfy common.css (Catppuccin-style names) */
+@define-color fg @text;
+@define-color fg_muted #9aa5ce;  /* fg_gutter - muted foreground */
+@define-color mantle @surface;   /* tooltip bg */
+@define-color overlay0 @border;  /* tooltip border tint */
+@define-color mauve @purple;     /* active workspace underline */
+
+/* Base */
+* {
+  color: @fg;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 10px;
+  background: transparent;
+}
+
+window#waybar {
+  background-color: transparent;
+  color: @fg;
+}
+
+/* Reset module container spacing */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: transparent;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+/* Workspaces bubble */
+#workspaces {
+  background-color: alpha(@surface, 0.9);
+  border-radius: 15px;
+  border: 1px solid alpha(@border, 0.3);
+  margin: 2px 4px;
+  padding: 2px 6px;
+}
+
+#workspaces button {
+  all: initial;
+  color: @fg_muted;
+  padding: 2px 6px;
+  margin: 0 1px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+#workspaces button:hover {
+  color: @baqua;
+  background-color: alpha(@baqua, 0.2);
+}
+
+#workspaces button.active {
+  color: @baqua;
+  background-color: alpha(@baqua, 0.3);
+}
+
+#workspaces button.empty {
+  opacity: 0.4;
+}
+
+/* Right-side module bubbles */
+#bluetooth,
+#network,
+#pulseaudio,
+#cpu,
+#battery,
+#power-profiles-daemon,
+#custom-notification {
+  color: @fg;
+  background-color: alpha(@surface, 0.9);
+  border-radius: 15px;
+  border: 1px solid alpha(@border, 0.3);
+  padding: 4px 8px;
+  margin: 2px 4px;
+  transition: all 0.3s ease;
+  font-size: 10px;
+}
+
+/* Center module - clock */
+#clock {
+  color: @fg;
+  background-color: alpha(@surface, 0.9);
+  border-radius: 15px;
+  border: 1px solid alpha(@border, 0.3);
+  padding: 4px 10px;
+  margin: 2px 4px;
+  transition: all 0.3s ease;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Left-side module - window title */
+#window {
+  color: @fg;
+  background-color: alpha(@surface, 0.9);
+  border-radius: 16px;
+  border: 1px solid alpha(@border, 0.3);
+  padding: 5px 11px;
+  margin: 3px 5px;
+  transition: all 0.3s ease;
+  font-size: 10px;
+}
+
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#cpu:hover,
+#battery:hover,
+#power-profiles-daemon:hover,
+#custom-notification:hover,
+#clock:hover,
+#window:hover {
+  background-color: alpha(@surface, 1.0);
+  border-color: alpha(@border, 0.6);
+}
+
+/* Special states */
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* Notification module specific styling */
+#custom-notification {
+  color: @yellow;
+  font-size: 14px;
+  min-width: 18px;
+  padding: 4px 10px;
+}
+
+#custom-scripts {
+  color: @red;
+}
+
+/* Essential styles from common.css */
+tooltip {
+  padding: 6px 8px;
+  background: @surface;
+  color: @text;
+  border: 1px solid alpha(@border, 0.35);
+  border-radius: 6px;
+}

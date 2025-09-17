@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Wait for Hyprland to fully initialize and export its instance signature
+timeout=30
+while [[ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" && $timeout -gt 0 ]]; do
+  sleep 0.2
+  timeout=$((timeout-1))
+done
+
+if [[ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
+  echo "Error: HYPRLAND_INSTANCE_SIGNATURE not found after timeout"
+  exit 1
+fi
+
+# Wait for Hyprland's IPC directory to be ready
+hypr_dir="/run/user/$(id -u)/hypr/$HYPRLAND_INSTANCE_SIGNATURE"
+timeout=30
+while [[ ! -d "$hypr_dir" && $timeout -gt 0 ]]; do
+  sleep 0.2
+  timeout=$((timeout-1))
+done
+
+if [[ ! -d "$hypr_dir" ]]; then
+  echo "Error: Hyprland IPC directory not found: $hypr_dir"
+  exit 1
+fi
+
+# Start hyprpaper with all arguments
+exec hyprpaper "$@"
