@@ -1,9 +1,7 @@
 export PATH=$PATH:/home/rodney/.local/bin
 export EDITOR="nvim"
 export VISUAL="nvim"
-export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export XDG_CURRENT_DESKTOP=Hyprland
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORMTHEME=gtk2
 export GTK3_MODULES=gdk-gtk3
@@ -71,7 +69,6 @@ alias bv='cd ~/.config/hypr && nvim bindings.conf'
 alias zv='cd && nvim .zshrc'
 alias tv='cd ~/.config/tmux && nvim tmux.conf'
 alias wv='cd ~/.config/waybar && nvim config.jsonc'
-alias wov='cd ~/.config/wofi && nvim config.txt'
 alias zsh='cd && source .zshrc'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -80,12 +77,8 @@ alias tmk='tmux kill-session -t'
 alias tmt='tmux new-session -s Terminal'
 alias tmf='tmux new-session -s Files'
 alias tma='tmux attach-session -t'
-alias tmat='tmux attach-session -t'
-alias tmaf='tmux attach-session -t'
-
-# alias nx='cd ~/nixos-dotfiles && nvim home.nix'
-# alias nrs='sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-btw'
-
+alias tmat='tmux attach-session -t Terminal'
+alias tmaf='tmux attach-session -t Files'
 
 # Shell integrations
 eval "$(fzf --zsh)"
