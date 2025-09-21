@@ -1,0 +1,78 @@
+/**
+ * Vague Clipboard theme for rofi
+ * Based on vague.rasi with clipboard-specific styling
+ */
+
+@import "vague.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width: 400px;
+    location: center;
+    anchor: center;
+    border-radius: 12px;
+}
+
+mainbox {
+    padding: 8px;
+}
+
+inputbar {
+    enabled: true;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    spacing: 2px;
+    margin: 0px;
+    padding: 4px 0px;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px;
+    border-radius: 8px;
+    spacing: 8px;
+    orientation: horizontal;
+}
+
+element-icon {
+    size: 1.2em;
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 12";
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+    expand: true;
+}
+
+element.selected.normal {
+    background-color: @selection;
+    text-color: @accent;
+    border: 0px;
+}
+
+element.normal.normal {
+    background-color: @normal-background;
+    text-color: @fg;
+    border: 0px;
+}
+
+prompt {
+    spacing: 0;
+    text-color: @muted;
+}
+
+entry {
+    spacing: 0;
+    text-color: @normal-foreground;
+    placeholder-color: @muted;
+    placeholder: "Search clipboard...";
+}

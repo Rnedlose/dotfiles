@@ -6,50 +6,50 @@
 # License:  	MIT License
 # Upstream: 	https://github.com/vague2k/vague.nvim/blob/main/extras/alacritty/vague.toml
 
-# [colors.primary]
-# background = '#141415'
-# foreground = '#cdcdcd'
-#
-# [colors.normal]
-# black = '#252530'
-# red = '#d8647e'
-# green = '#7fa563'
-# yellow = '#f3be7c'
-# blue = '#6e94b2'
-# magenta = '#bb9dbd'
-# cyan = '#aeaed1'
-# white = '#cdcdcd'
-#
-# [colors.bright]
-# black = '#606079'
-# red = '#e08398'
-# green = '#99b782'
-# yellow = '#f5cb96'
-# blue = '#8ba9c1'
-# magenta = '#c9b1ca'
-# cyan = '#bebeda'
-# white = '#d7d7d7'
-
-[colors.bright]
-black = "#444b6a"
-blue = "#7da6ff"
-cyan = "#0db9d7"
-green = "#b9f27c"
-magenta = "#bb9af7"
-red = "#ff7a93"
-white = "#acb0d0"
-yellow = "#ff9e64"
+[colors.primary]
+background = '#141415'
+foreground = '#cdcdcd'
 
 [colors.normal]
-black = "#32344a"
-blue = "#7aa2f7"
-cyan = "#449dab"
-green = "#9ece6a"
-magenta = "#ad8ee6"
-red = "#f7768e"
-white = "#787c99"
-yellow = "#e0af68"
+black = '#252530'
+red = '#d8647e'
+green = '#7fa563'
+yellow = '#f3be7c'
+blue = '#6e94b2'
+magenta = '#bb9dbd'
+cyan = '#aeaed1'
+white = '#cdcdcd'
 
-[colors.primary]
-background = "#1a1b26"
-foreground = "#a9b1d6"
+[colors.bright]
+black = '#606079'
+red = '#e08398'
+green = '#99b782'
+yellow = '#f5cb96'
+blue = '#8ba9c1'
+magenta = '#c9b1ca'
+cyan = '#bebeda'
+white = '#d7d7d7'
+
+# [colors.bright]
+# black = "#444b6a"
+# blue = "#7da6ff"
+# cyan = "#0db9d7"
+# green = "#b9f27c"
+# magenta = "#bb9af7"
+# red = "#ff7a93"
+# white = "#acb0d0"
+# yellow = "#ff9e64"
+#
+# [colors.normal]
+# black = "#32344a"
+# blue = "#7aa2f7"
+# cyan = "#449dab"
+# green = "#9ece6a"
+# magenta = "#ad8ee6"
+# red = "#f7768e"
+# white = "#787c99"
+# yellow = "#e0af68"
+#
+# [colors.primary]
+# background = "#1a1b26"
+# foreground = "#a9b1d6"

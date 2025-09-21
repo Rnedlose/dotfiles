@@ -11,8 +11,7 @@ fi
 
 # Get clipboard history and let user select
 selection=$(cliphist list | rofi -dmenu -i -p "📋 Clipboard History" \
-    -theme-str 'window {width: 80%;}' \
-    -theme-str 'listview {lines: 10;}')
+    -theme ~/.config/rofi/themes/vague-clipboard.rasi)
 
 # If user made a selection, copy it to clipboard
 if [[ -n "$selection" ]]; then

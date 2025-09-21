@@ -4,11 +4,17 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term alacritty
 
 set $menu "rofi -show drun"
 set $browser google-chrome-stable --new-window --ozone-platform=wayland
 set $lockscreen ~/.config/sway/scripts/lockscreen.sh
+
+# Screenshots
+set $screenshot_dir ~/Pictures/Screenshots
+# set $grim_satty_area grim -g "$(slurp)" -t ppm - | satty --filename - --fullscreen --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
+# set $grim_satty_full grim - -t ppm - | satty --filename - --fullscreen --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
+# set $grim_satty_window grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" -t ppm - | satty --filename - --fullscreen --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
 
 # Background changer via swww
 set $walls "${HOME}/.config/swww/walls.sh"
@@ -59,10 +65,10 @@ input type:touchpad {
     middle_emulation enabled
 }
 
-# Swap alt/win and capslock to left control
-input type:keyboard {
-    xkb_options "altwin:swap_lalt_lwin, ctrl:swapcaps"
-}
+# # Swap alt/win and capslock to left control
+# input type:keyboard {
+#     xkb_options "altwin:swap_lalt_lwin, ctrl:swapcaps"
+# }
 
 # Keybinds
 bindsym $mod+b exec $browser
@@ -71,7 +77,7 @@ bindsym $mod+w kill
 bindsym $mod+space exec $menu
 bindsym $mod+o exec obsidian
 bindsym $mod+s exec spotify
-bindsym $mod+f exec $term -e ~/.local/bin/file-manager.sh
+bindsym $mod+f exec kitty -e ~/.local/bin/file-manager.sh
 
 # Webapps
 bindsym $mod+m exec $browser --app="https://messages.google.com/web/conversations"
@@ -81,6 +87,15 @@ bindsym $mod+d exec $browser --app="https://discord.com/channels/@me"
 bindsym $mod+g exec $browser --app="https://grok.com"
 bindsym $mod+r exec $browser --app="https://reddit.com"
 bindsym $mod+x exec $browser --app="https://x.com/"
+
+# Screenshot an area
+bindsym Print exec grimshot save area - | satty --filename - --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
+
+# Screenshot the whole screen
+bindsym ctrl+Print exec grimshot save screen - | satty --filename - --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
+
+# Screenshot a specific window
+bindsym $mod+Print exec grimshot save active - | satty --filename - --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
 
 # Windows
 bindsym $mod+backslash exec rofi -show window
@@ -101,7 +116,7 @@ bindsym $mod+Shift+x exec $lockscreen
 bindsym $mod+Shift+Space exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # Power menu
-set $power "rofi -show p -modi p:${HOME}/.config/rofi/rofi-power-menu --symbols-font 'Symbols Nerd Font' -theme tokyo-night-power"
+set $power "rofi -show p -modi p:${HOME}/.config/rofi/rofi-power-menu --symbols-font 'Symbols Nerd Font' -theme vague-power"
 bindsym $mod+Shift+p exec $power
 
 # Volume with swayosd notifications
@@ -117,12 +132,6 @@ bindsym XF86AudioPlay exec playerctl play-pause
 # Backlight with swayosd notifications
 bindsym XF86MonBrightnessUp exec swayosd-client --brightness +5
 bindsym XF86MonBrightnessDown exec swayosd-client --brightness -5
-
-# Print Screen alone: screenshot an area, save to files and clipboard
-bindsym Print exec ~/.config/sway/scripts/screenshots.sh area
-
-# Control + Print Screen: screenshot whole selected screen, save to files and clipboard
-bindsym Control+Print exec ~/.config/sway/scripts/screenshots.sh fullscreen
 
 # Reload config file
 bindsym $mod+Shift+c exec "sway reload && notify-send -e 'Config reloaded'  'Sway happy!'"
@@ -205,6 +214,8 @@ bindsym $mod+Shift+r mode "resize"
 for_window [app_id="Impala"] floating enable, move position center
 for_window [app_id="Wiremix"] floating enable, move position center
 for_window [app_id="Bluetui"] floating enable, move position center
+for_window [app_id="satty"] floating enable, resize set 70 ppt 70 ppt, move position center
+for_window [app_id="kitty"] floating enable, resize set 70 ppt 70 ppt, move position center
 
 # clamshell mode
 bindswitch lid:on output eDP-1 disable

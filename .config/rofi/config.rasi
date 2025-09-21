@@ -38,4 +38,4 @@ element {
     children: [element-icon, element-text];
 }
 
-@theme "./themes/tokyo-night.rasi"
+@theme "./themes/vague.rasi"

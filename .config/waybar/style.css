@@ -1,71 +1,92 @@
-/* Waybar – Tokyo Night Night Theme */
-/* @import url("./common.css"); */
-/* DISABLED - using bubble style instead */
+/* Waybar – Custom Palette from user */
+@import url("./common.css");
+/* ok if it exists; ignored if not */
 
-/* ===== Tokyo Night Night Color Palette =====
- * Based on https://github.com/folke/tokyonight.nvim
- * Night variant colors
- ============================================= */
+/* ===== Palette (from user) =====
+[colors.primary]
+background = '#141415'
+foreground = '#cdcdcd'
 
-/* Primary Tokyo Night Night colors */
-@define-color bg #1a1b26;        /* bg */
-@define-color text #c0caf5;      /* fg */
+[colors.normal]
+black   = '#252530'
+red     = '#d8647e'
+green   = '#7fa563'
+yellow  = '#f3be7c'
+blue    = '#6e94b2'
+magenta = '#bb9dbd'
+cyan    = '#aeaed1'
+white   = '#cdcdcd'
+
+[colors.bright]
+black   = '#606079'
+red     = '#e08398'
+green   = '#99b782'
+yellow  = '#f5cb96'
+blue    = '#8ba9c1'
+magenta = '#c9b1ca'
+cyan    = '#bebeda'
+white   = '#d7d7d7'
+================================= */
+
+/* Primary */
+@define-color bg #141415;
+@define-color text #cdcdcd;
 
 /* Neutrals */
-@define-color black #15161e;     /* bg_dark */
-@define-color white #c0caf5;     /* fg */
-@define-color brightblk #565f89; /* comment */
+@define-color black #252530;
+@define-color white #cdcdcd;
+@define-color brightblk #606079;
 
-/* Tokyo Night Night accent colors */
-@define-color red #f7768e;       /* red */
-@define-color green #9ece6a;     /* green */
-@define-color yellow #e0af68;    /* yellow */
-@define-color blue #7aa2f7;      /* blue */
-@define-color purple #bb9af7;    /* purple */
-@define-color aqua #7dcfff;      /* cyan */
+/* Accents (normal) */
+@define-color red #d8647e;
+@define-color green #7fa563;
+@define-color yellow #f3be7c;
+@define-color blue #6e94b2;
+@define-color purple #bb9dbd;
+/* maps user 'magenta' */
+@define-color aqua #aeaed1;
+/* maps user 'cyan' */
 
-/* Bright/saturated variants */
-@define-color bred #f7768e;      /* red (same) */
-@define-color bgreen #9ece6a;    /* green (same) */
-@define-color byellow #e0af68;   /* yellow (same) */
-@define-color bblue #7aa2f7;     /* blue (same) */
-@define-color bpurple #bb9af7;   /* purple (same) */
-@define-color baqua #7dcfff;     /* cyan (same) */
-@define-color bwhite #c0caf5;    /* fg */
-
-/* Special Tokyo Night colors */
-@define-color selection #283457; /* bg_visual */
-@define-color border #3b4261;    /* border */
-@define-color surface #24283b;   /* bg_highlight */
+/* Bright accents (optional) */
+@define-color bred #e08398;
+@define-color bgreen #99b782;
+@define-color byellow #f5cb96;
+@define-color bblue #8ba9c1;
+@define-color bpurple #c9b1ca;
+@define-color baqua #bebeda;
+@define-color bwhite #d7d7d7;
 
 /* Aliases to satisfy common.css (Catppuccin-style names) */
 @define-color fg @text;
-@define-color fg_muted #9aa5ce;  /* fg_gutter - muted foreground */
-@define-color mantle @surface;   /* tooltip bg */
-@define-color overlay0 @border;  /* tooltip border tint */
-@define-color mauve @purple;     /* active workspace underline */
+@define-color fg_muted @baqua;
+/* slightly softer than pure fg */
+@define-color mantle @black;
+/* tooltip bg */
+@define-color overlay0 @brightblk;
+/* tooltip border tint */
+@define-color mauve @purple;
+/* active workspace underline */
 
 /* Base */
 * {
-  color: @fg;
+  color: @fg_muted;
   border: none;
   border-radius: 0;
   min-height: 0;
   font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 10px;
-  background: transparent;
+  font-size: 15px;
 }
 
 window#waybar {
-  background-color: transparent;
+  background-color: alpha(@bg, 0.95);
   color: @fg;
 }
 
-/* Reset module container spacing */
-.modules-left,
-.modules-center,
-.modules-right {
-  background: transparent;
+/* Consistent spacing */
+.modules-left>*,
+.modules-center>*,
+.modules-right>* {
+  margin: 0 8px;
 }
 
 .modules-left {
@@ -76,130 +97,71 @@ window#waybar {
   margin-right: 8px;
 }
 
-/* Workspaces bubble */
+/* Workspaces: icons only, no pills */
 #workspaces {
-  background-color: alpha(@surface, 0.9);
-  border-radius: 15px;
-  border: 1px solid alpha(@border, 0.3);
-  margin: 2px 4px;
-  padding: 2px 6px;
+  padding: 0 6px;
 }
 
 #workspaces button {
   all: initial;
   color: @fg_muted;
-  padding: 2px 6px;
-  margin: 0 1px;
+  padding: 0 8px;
+  margin: 0 4px;
   font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 10px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: transparent;
+  font-size: 18px;
 }
 
 #workspaces button:hover {
   color: @baqua;
-  background-color: alpha(@baqua, 0.2);
 }
 
 #workspaces button.active {
   color: @baqua;
-  background-color: alpha(@baqua, 0.3);
+  border-bottom: 2px solid @baqua;
 }
 
 #workspaces button.empty {
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
-/* Right-side module bubbles */
-#bluetooth,
-#network,
-#pulseaudio,
-#cpu,
-#battery,
-#power-profiles-daemon,
-#custom-notification {
-  color: @fg;
-  background-color: alpha(@surface, 0.9);
-  border-radius: 15px;
-  border: 1px solid alpha(@border, 0.3);
-  padding: 4px 8px;
-  margin: 2px 4px;
-  transition: all 0.3s ease;
-  font-size: 10px;
+/* Default module icon color; specific overrides come from common.css */
+#bluetooth {
+  color: @baqua;
 }
 
-/* Center module - clock */
-#clock {
-  color: @fg;
-  background-color: alpha(@surface, 0.9);
-  border-radius: 15px;
-  border: 1px solid alpha(@border, 0.3);
-  padding: 4px 10px;
-  margin: 2px 4px;
-  transition: all 0.3s ease;
-  font-size: 10px;
-  font-weight: bold;
+#network {
+  color: @baqua;
 }
 
-/* Left-side module - window title */
-#window {
-  color: @fg;
-  background-color: alpha(@surface, 0.9);
-  border-radius: 16px;
-  border: 1px solid alpha(@border, 0.3);
-  padding: 5px 11px;
-  margin: 3px 5px;
-  transition: all 0.3s ease;
-  font-size: 10px;
+#pulseaudio {
+  color: @baqua;
 }
 
-#bluetooth:hover,
-#network:hover,
-#pulseaudio:hover,
-#cpu:hover,
-#battery:hover,
-#power-profiles-daemon:hover,
-#custom-notification:hover,
-#clock:hover,
-#window:hover {
-  background-color: alpha(@surface, 1.0);
-  border-color: alpha(@border, 0.6);
+#cpu {
+  color: @baqua;
 }
 
-/* Special states */
-#battery.warning {
-  color: @yellow;
+#battery {
+  color: @baqua;
 }
 
-#battery.critical {
-  color: @red;
-  animation: blink 1s steps(2, start) infinite;
-}
-
-@keyframes blink {
-  to {
-    opacity: 0.5;
-  }
-}
-
-/* Notification module specific styling */
-#custom-notification {
-  color: @yellow;
-  font-size: 14px;
-  min-width: 18px;
-  padding: 4px 10px;
+#power-profiles-daemon {
+  color: @baqua;
 }
 
 #custom-scripts {
   color: @red;
 }
 
-/* Essential styles from common.css */
-tooltip {
-  padding: 6px 8px;
-  background: @surface;
-  color: @text;
-  border: 1px solid alpha(@border, 0.35);
-  border-radius: 6px;
+/* Fix SwayNC notification icon clipping */
+#custom-notification {
+  color: @baqua;
+  padding: 0 8px;
+  margin: 0 4px;
+  min-width: 24px;
+}
+
+/* Additional spacing for left module group */
+.modules-left > #custom-notification {
+  margin-left: 8px;
 }

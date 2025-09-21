@@ -1,5 +1,4 @@
-/* Shared tweaks used by style.css - DISABLED FOR BUBBLE STYLE */
-/*
+/* Shared tweaks used by style.css  */
 * {
   background-color: @bg;
   color: @text;
@@ -10,38 +9,31 @@
   font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 12px;
 }
-*/
 
-/* Even spacing for all right-side icons - DISABLED FOR BUBBLE STYLE */
-/*
+/* Even spacing for all right-side icons */
 .modules-right>* {
   margin-left: 8px;
   margin-right: 8px;
 }
-*/
 
-/* Fallback for GTK quirks: explicitly list the modules, same gap - DISABLED FOR BUBBLE STYLE */
-/*
+/* Fallback for GTK quirks: explicitly list the modules, same gap */
 #bluetooth,
 #network,
 #pulseaudio,
 #cpu,
 #battery,
+#power-profiles-daemon,
 #custom-notify,
 #custom-scripts {
   margin-left: 8px;
   margin-right: 8px;
 }
-*/
 
-/* DISABLED FOR BUBBLE STYLE */
-/*
 .modules-left {
   margin-left: 12px;
 }
 
 /* Workspaces */
-/*
 #workspaces {
   padding: 0 6px;
 }
@@ -62,16 +54,15 @@
   color: @mauve;
   border-bottom: 2px solid @mauve;
 }
-*/
 
-/* Common modules - DISABLED FOR BUBBLE STYLE */
-/*
+/* Common modules */
 #tray,
 #cpu,
 #battery,
 #network,
 #bluetooth,
 #pulseaudio,
+#power-profiles-daemon,
 #clock {
   min-width: 12px;
   margin: 0 7.5px;
@@ -92,7 +83,6 @@
 #bluetooth {
   color: @mauve;
 }
-*/
 
 #custom-expand-icon {
   margin-right: 7px;
@@ -117,11 +107,8 @@ tooltip {
   }
 }
 
-/* DISABLED FOR BUBBLE STYLE */
-/*
 window#waybar {
   margin: 0;
   padding: 0;
   border: 0;
 }
-*/

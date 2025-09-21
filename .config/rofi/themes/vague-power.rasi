@@ -1,0 +1,81 @@
+/**
+ * Vague Power Menu theme for rofi
+ * Based on vague.rasi with power menu specific styling
+ */
+
+@import "vague.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width: 400px;
+    location: center;
+    anchor: center;
+    border-radius: 12px;
+}
+
+mainbox {
+    padding: 8px;
+}
+
+inputbar {
+    enabled: false;
+}
+
+listview {
+    columns: 1;
+    lines: 6;
+    spacing: 10px;
+    margin: 0px;
+    padding: 8px 0px;
+}
+
+element {
+    padding: 16px 20px;
+    border-radius: 8px;
+    spacing: 16px;
+    orientation: horizontal;
+}
+
+element-icon {
+    size: 28px;
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 12";
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+    expand: true;
+    margin: 0px 0px 0px 8px;
+}
+
+element.selected.normal {
+    background-color: @selection;
+    text-color: @accent;
+    border: 2px;
+    border-color: @accent;
+}
+
+element.normal.normal {
+    background-color: @bg1;
+    text-color: @fg;
+    border: 1px;
+    border-color: @border;
+}
+
+message {
+    margin: 8px 0px 0px 0px;
+}
+
+textbox {
+    background-color: @bg1;
+    text-color: @fg;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border: 1px solid;
+    border-color: @border;
+}
