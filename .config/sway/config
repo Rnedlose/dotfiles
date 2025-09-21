@@ -72,6 +72,7 @@ bindsym $mod+w kill
 bindsym $mod+space exec $menu
 bindsym $mod+o exec obsidian
 bindsym $mod+s exec spotify
+bindsym $mod+f exec $term -e ~/.local/bin/file-manager.sh
 
 # Webapps
 bindsym $mod+m exec $browser --app="https://messages.google.com/web/conversations"
