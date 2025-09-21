@@ -37,7 +37,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "nospacing": 1,
-    "on-click": "alacritty --class=Impala -e impala"
+    "on-click": "kitty --class=Impala -e impala"
   },
   "sway/workspaces": {
     "format": "{name}",
@@ -56,7 +56,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "alacritty -e btop"
+    "on-click": "kitty -e btop"
   },
   "clock": {
     "format": "{:%I:%M %p}",
@@ -109,12 +109,11 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "alacritty --class=Bluetui -e bluetui"
+    "on-click": "kitty --class=Bluetui -e bluetui"
   },
   "pulseaudio": {
     "format": "{icon}",
-    // "on-click": "pavucontrol",
-    "on-click": "alacritty --class=Wiremix -e wiremix",
+    "on-click": "kitty --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
