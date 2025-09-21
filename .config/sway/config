@@ -60,10 +60,9 @@ input type:touchpad {
 }
 
 # Swap alt/win and capslock to left control
-# input type:keyboard {
-#     xkb_options "ctrl:swapcaps"
-# }
-# altwin:swap_lalt_lwin,
+input type:keyboard {
+    xkb_options "altwin:swap_lalt_lwin, ctrl:swapcaps"
+}
 
 # Keybinds
 bindsym $mod+b exec $browser
