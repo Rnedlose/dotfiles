@@ -83,6 +83,3 @@ alias tmaf='tmux attach-session -t Files'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-# export GTK_THEME=Gruvbox-Dark  # Not needed for libadwaita apps
-export ADW_DEBUG_COLOR_SCHEME=prefer-dark
-export GTK_THEME=Adwaita:dark

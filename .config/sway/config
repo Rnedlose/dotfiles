@@ -7,14 +7,14 @@ set $right l
 set $term alacritty
 
 set $menu "rofi -show drun"
-set $browser google-chrome-stable --new-window --ozone-platform=wayland
+set $browser firefox-developer-edition --new-window
 set $lockscreen ~/.config/sway/scripts/lockscreen.sh
+set $youtube ~/.config/sway/scripts/YouTube.sh
+set $messages ~/.config/sway/scripts/Messages.sh
+
 
 # Screenshots
 set $screenshot_dir ~/Pictures/Screenshots
-# set $grim_satty_area grim -g "$(slurp)" -t ppm - | satty --filename - --fullscreen --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
-# set $grim_satty_full grim - -t ppm - | satty --filename - --fullscreen --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
-# set $grim_satty_window grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" -t ppm - | satty --filename - --fullscreen --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
 
 # Background changer via swww
 set $walls "${HOME}/.config/swww/walls.sh"
@@ -50,6 +50,7 @@ exec wl-paste --watch cliphist store
 exec swayidle -w timeout 300 '$lockscreen -f' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep '$lockscreen -f'
 exec sunsetr
 exec $walls
+exec --no-startup-id xdg-desktop-portal-gtk
 
 # External monitor (DP-3) - 4K at scale 1.67, positioned at top
 output DP-3 resolution 3840x2160 scale 1.67 position 0 0
@@ -73,20 +74,17 @@ input type:touchpad {
 # Keybinds
 bindsym $mod+b exec $browser
 bindsym $mod+t exec $term
+bindsym $mod+e exec thunderbird
 bindsym $mod+w kill
 bindsym $mod+space exec $menu
-bindsym $mod+o exec obsidian
-bindsym $mod+s exec spotify
+bindsym $mod+o exec flatpak run md.obsidian.Obsidian
+bindsym $mod+s exec flatpak run com.spotify.Client
+bindsym $mod+Shift+f exec nautilus
 bindsym $mod+f exec kitty -e ~/.local/bin/file-manager.sh
+bindsym $mod+d exec flatpak run com.discordapp.Discord
 
-# Webapps
-bindsym $mod+m exec $browser --app="https://messages.google.com/web/conversations"
-bindsym $mod+a exec $browser --app="https://chatgpt.com"
-bindsym $mod+y exec $browser --app="https://youtube.com/"
-bindsym $mod+d exec $browser --app="https://discord.com/channels/@me"
-bindsym $mod+g exec $browser --app="https://grok.com"
-bindsym $mod+r exec $browser --app="https://reddit.com"
-bindsym $mod+x exec $browser --app="https://x.com/"
+bindsym $mod+m exec $messages
+bindsym $mod+y exec $youtube
 
 # Screenshot an area
 bindsym Print exec grimshot save area - | satty --filename - --output-filename $screenshot_dir/satty-$(date +%Y%m%d-%H:%M:%S).png
