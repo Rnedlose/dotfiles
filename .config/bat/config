@@ -1,0 +1,12 @@
+# bat configuration file
+# Set the vague theme as default
+--theme="vague"
+
+# Show line numbers
+--style="numbers,changes,header,grid"
+
+# Use italic font for comments and keywords
+--italic-text=always
+
+# Enable paging
+--paging=auto
