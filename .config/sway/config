@@ -79,7 +79,7 @@ bindsym $mod+w kill
 bindsym $mod+space exec $menu
 bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 bindsym $mod+s exec flatpak run com.spotify.Client
-bindsym $mod+Shift+f exec nautilus
+bindsym F12 exec nautilus
 bindsym $mod+f exec kitty -e ~/.local/bin/file-manager.sh
 bindsym $mod+d exec flatpak run com.discordapp.Discord
 
