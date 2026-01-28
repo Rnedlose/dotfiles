@@ -1,0 +1,68 @@
+[global]
+### Geometry / placement
+monitor = 0
+follow = keyboard
+origin = bottom-center
+offset = 0x32
+width = 420
+height = 120
+notification_limit = 3
+
+### Typography
+font = JetBrainsMono Nerd Font 13
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = center
+vertical_alignment = center
+word_wrap = yes
+ignore_newline = no
+
+### Spacing
+padding = 16
+horizontal_padding = 16
+frame_width = 2
+separator_height = 8
+corner_radius = 14
+
+### Timing
+timeout = 2
+history_length = 20
+idle_threshold = 0
+
+### Behavior
+show_age_threshold = -1
+stack_duplicates = true
+hide_duplicate_count = true
+
+### Make sure it's visible
+transparency = 0
+
+### TokyoNight Storm colors
+# Background: #24283b
+# Foreground: #c0caf5
+# Accent blue: #7aa2f7
+# Cyan: #7dcfff
+# Red: #f7768e
+
+background = "#24283b"
+foreground = "#c0caf5"
+frame_color = "#7aa2f7"
+
+[urgency_low]
+background = "#24283b"
+foreground = "#c0caf5"
+frame_color = "#7aa2f7"
+timeout = 2
+
+[urgency_normal]
+background = "#24283b"
+foreground = "#c0caf5"
+frame_color = "#7dcfff"
+timeout = 2
+
+[urgency_critical]
+background = "#24283b"
+foreground = "#f7768e"
+frame_color = "#f7768e"
+timeout = 0
+

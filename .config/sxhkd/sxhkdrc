@@ -1,0 +1,36 @@
+XF86AudioRaiseVolume
+    sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && osd-vol'
+
+XF86AudioLowerVolume
+    sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && osd-vol'
+
+XF86AudioMute
+    sh -c 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && osd-vol'
+
+XF86AudioPlay
+    sh -c 'playerctl play-pause && osd-track'
+
+XF86AudioNext
+    sh -c 'playerctl next && osd-track'
+
+XF86AudioPrev
+    sh -c 'playerctl previous && osd-track'
+
+XF86MonBrightnessUp
+    sh -c 'brightnessctl set +10% && osd-bright'
+
+XF86MonBrightnessDown
+    sh -c 'brightnessctl set 10%- && osd-bright'
+
+
+
+XF86MonBrightnessUp
+    brightnessctl set +10%
+
+XF86MonBrightnessDown
+    brightnessctl set 10%-
+
+# Select region (Print Screen)
+Print
+    sh -c 'maim -s | xclip -selection clipboard -t image/png'
+
