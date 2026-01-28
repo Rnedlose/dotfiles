@@ -1,11 +1,3 @@
-clear
-ping google.com
-clear
-cd .config/oxwm/
-nvim config.lua 
-cd
-yay -S wiremix
-wiremix
 wiremix
 sudo pacman -S pipewire pipewire-pulse
 sudo pacman -Rns pulseaudio
@@ -498,3 +490,13 @@ ping google.com
 cleaar
 clear
 cd
+cf
+clear
+ping google.com
+cd dot
+lazygit
+cd
+sudo reboot
+tmt
+cd .config/oxwm/
+ls

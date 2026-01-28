@@ -19,7 +19,7 @@ local colors = {
 }
 
 
-local tags = { "", "", "", "󰙯", "󱇤", "" } -- Example of nerd font icon tags
+local tags = { "", "", "", "󰙯", "󱇤", "", "", "󰎞" } -- Example of nerd font icon tags
 
 local bar_font = "JetBrainsMono Nerd Font Propo:style=Bold:size=16"
 
@@ -119,11 +119,11 @@ oxwm.key.bind({ modkey, "Shift" }, "Slash", oxwm.show_keybinds())
 oxwm.key.bind({ modkey, "Shift" }, "Return", oxwm.client.toggle_fullscreen())
 oxwm.key.bind({ modkey, "Shift" }, "F", oxwm.client.toggle_floating())
 oxwm.key.bind({ modkey, "Shift" }, "T", oxwm.layout.set("tiling"))
--- oxwm.key.bind({ modkey }, "H", oxwm.set_master_factor(-5))
--- oxwm.key.bind({ modkey }, "L", oxwm.set_master_factor(5))
--- oxwm.key.bind({ modkey }, "I", oxwm.inc_num_master(1))
--- oxwm.key.bind({ modkey }, "O", oxwm.inc_num_master(-1))
--- oxwm.key.bind({ modkey }, "A", oxwm.toggle_gaps())
+oxwm.key.bind({ modkey }, "H", oxwm.set_master_factor(-5))
+oxwm.key.bind({ modkey }, "L", oxwm.set_master_factor(5))
+oxwm.key.bind({ modkey }, "I", oxwm.inc_num_master(1))
+oxwm.key.bind({ modkey }, "O", oxwm.inc_num_master(-1))
+oxwm.key.bind({ modkey }, "A", oxwm.toggle_gaps())
 oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.quit())
 oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
 oxwm.key.bind({ modkey }, "J", oxwm.client.focus_stack(1))
